@@ -1,1 +1,1 @@
-# liferay7.1
+# liferay7.1 example

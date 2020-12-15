@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -8,25 +8,25 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./welcome.component.less']
 })
 export class WelcomeComponent implements OnInit {
-  defaultLang: string = "en";
+  defaultLang = 'en';
   isSpinning = true;
   validateForm!: FormGroup;
-  
+
   constructor(private translate: TranslateService, private fb: FormBuilder) {
     translate.setDefaultLang(this.defaultLang);
   }
 
   ngOnInit(): void {
     this.translate.use(this.defaultLang).subscribe(data => {
-      console.log('data', data)
+      console.log('data', data);
     },
     (error) => {
       this.isSpinning = false;
-      console.log('error', error)
+      console.log('error', error);
     },
     () => {
       this.isSpinning = false;
-      console.log('finally')
+      console.log('finally');
     });
 
     this.validateForm = this.fb.group({
@@ -75,19 +75,19 @@ export class WelcomeComponent implements OnInit {
     });
   }
 
-  get fruitFormArray(): FormArray{
+  get fruitFormArray(): FormArray {
     return this.validateForm.get('fruit') as FormArray;
   }
-  get formSectionArray(): FormArray{
+  get formSectionArray(): FormArray {
     return this.validateForm.get('FormSection') as FormArray;
   }
-  get genderArray(): FormArray{
+  get genderArray(): FormArray {
     return this.validateForm.get('gender') as FormArray;
   }
 
   log(value: string[]): void {
     console.log(value);
-    console.log(this.validateForm.value)
+    console.log(this.validateForm.value);
   }
 
   submitForm(): void {
@@ -109,7 +109,7 @@ export class WelcomeComponent implements OnInit {
       return { confirm: true, error: true };
     }
     return {};
-  };
+  }
 
   getCaptcha(e: MouseEvent): void {
     e.preventDefault();
@@ -120,6 +120,6 @@ export class WelcomeComponent implements OnInit {
     this.translate.use(language);
   }
 
-  
+
 
 }

@@ -16,7 +16,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     CommonModule,
     TranslateModule.forChild({
         loader: {
-          provide: TranslateLoader, 
+          provide: TranslateLoader,
           useFactory: HttpLoaderFactory,
           deps: [HttpClient]
         },
@@ -35,6 +35,6 @@ export class LazyLoadedModule {
       providers: [
         // ShoppingCartService, AccountService
       ]
-    }
+    };
   }
 }
