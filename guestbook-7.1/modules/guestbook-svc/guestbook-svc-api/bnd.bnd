@@ -1,0 +1,10 @@
+Bundle-Name: guestbook-svc-api
+Bundle-SymbolicName: com.ethan.svc.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.ethan.svc.exception,\
+	com.ethan.svc.model,\
+	com.ethan.svc.service,\
+	com.ethan.svc.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../guestbook-svc-service/service.xml

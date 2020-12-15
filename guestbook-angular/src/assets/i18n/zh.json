@@ -1,0 +1,7 @@
+{
+  "demo": {
+      "title": "Translation demo zh",
+      "text": "This is a simple demonstration app for ngx-translate zh",
+      "greeting": "你好 {{name}}!"
+  }
+}

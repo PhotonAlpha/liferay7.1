@@ -1,0 +1,25 @@
+dependencies {
+	compile project(":modules:guestbook-svc:guestbook-svc-api")
+
+	compileOnly group: "biz.aQute.bnd", name: "biz.aQute.bnd.annotation", version: "4.3.0"
+	compileOnly group: "com.liferay", name: "com.liferay.petra.io"
+	compileOnly group: "com.liferay", name: "com.liferay.petra.string"
+	compileOnly group: "com.liferay", name: "com.liferay.portal.spring.extender.api"
+	compileOnly group: "com.liferay.portal", name: "com.liferay.portal.kernel"
+	compileOnly group: "org.osgi", name: "org.osgi.core"
+	compileOnly group: "org.osgi", name: "org.osgi.service.component.annotations"
+}
+
+buildService {
+	apiDir = "../guestbook-svc-api/src/main/java"
+}
+
+group = "com.ethan.svc"
+
+tasks.withType(JavaCompile) {
+
+	// Generated classes using Jodd library are unable to be read when compiled against JDK 11
+
+	sourceCompatibility = JavaVersion.VERSION_1_8
+	targetCompatibility = JavaVersion.VERSION_1_8
+}

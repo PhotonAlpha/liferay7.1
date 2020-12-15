@@ -1,0 +1,83 @@
+<nz-spin nzTip="Loading..." [nzSpinning]="isSpinning">
+  <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="FormSection">{{ 'idealTranslation.FormSection' | translate }}</nz-form-label>
+      <nz-checkbox-wrapper style="width: 100%;" (nzOnChange)="log($event)">
+        <div nz-row>
+          <ng-container formArrayName="FormSection">
+            <div *ngFor = "let fsection of formSectionArray.controls; let idx = index" formGroupName="{{ idx }}" nz-col nzSpan="6">
+              <label nz-checkbox [formControl]="fsection.get('checked')" [nzValue]="fsection.get('name')">{{ 'idealTranslation.fruitOption.' + fsection.get('name').value | translate }}</label>
+            </div>
+          </ng-container>
+        </div>
+      </nz-checkbox-wrapper>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">{{ 'idealTranslation.email' | translate }}</nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+        <input nz-input formControlName="email" id="email" />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="nickname" nzRequired nzTooltipTitle="What do you want other to call you">
+        <span>{{ 'idealTranslation.nickname' | translate }}</span>
+      </nz-form-label>
+      <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your nickname!">
+        <input nz-input id="nickname" formControlName="nickname" />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="fruit">{{ 'idealTranslation.fruit' | translate }}</nz-form-label>
+      <nz-checkbox-wrapper style="width: 100%;" (nzOnChange)="log($event)">
+        <div nz-row>
+          <ng-container formArrayName="fruit">
+            <div *ngFor = "let fru of fruitFormArray.controls; let idx = index" formGroupName="{{ idx }}" nz-col nzSpan="8">
+              <label nz-checkbox [formControl]="fru.get('checked')" [nzValue]="fru.get('name')">{{ 'idealTranslation.fruitOption.' + fru.get('name').value | translate }}</label>
+            </div>
+          </ng-container>
+        </div>
+      </nz-checkbox-wrapper>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="fruit">{{ 'idealTranslation.gender' | translate }}</nz-form-label>
+      <nz-radio-group formControlName="gender">
+        <label nz-radio nzValue="female">{{ 'idealTranslation.genderOption.female' | translate }}</label>
+        <label nz-radio nzValue="male">{{ 'idealTranslation.genderOption.male' | translate }}</label>
+      </nz-radio-group>
+    </nz-form-item>
+
+    <!-- <nz-form-item nz-row class="register-area">
+      <nz-form-control [nzSpan]="14" [nzOffset]="6">
+        <button nz-button nzType="primary">Register</button>
+      </nz-form-control>
+    </nz-form-item> -->
+  </form>
+
+
+  <div>
+    <!-- translation: translation pipe -->
+    <h1>{{ 'demo.title' | translate }}</h1>
+
+    <!-- translation: directive (key as attribute)-->
+    <p [translate]="'demo.text'"></p>
+
+    <!-- translation: directive (key as content of element) -->
+    <p translate>demo.text</p>
+
+    <!-- translation: translation pipe -->
+    <p>{{ 'demo.greeting' | translate:{'name':'Andreas'} }}</p>
+
+    <!-- translation: directive (key as attribute) -->
+    <p [translate]="'demo.greeting'" [translateParams]="{name: 'Andreas'}"></p>
+
+    <!-- translation: directive (key as content of element)-->
+    <p translate [translateParams]="{name: 'Andreas'}">demo.greeting</p>
+  </div>
+
+  <button nz-button nzType="primary" (click)="useLanguage('en')">Primary Button</button>
+  <button nz-button nzType="default" (click)="useLanguage('zh')">Default Button</button>
+</nz-spin>  

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<beans
+	default-destroy-method="destroy"
+	default-init-method="afterPropertiesSet"
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+>
+	<bean class="com.ethan.svc.service.impl.FriendEntryLocalServiceImpl" id="com.ethan.svc.service.FriendEntryLocalService" />
+	<bean class="com.ethan.svc.service.persistence.impl.FriendEntryPersistenceImpl" id="com.ethan.svc.service.persistence.FriendEntryPersistence" parent="basePersistence" />
+	<bean class="com.ethan.svc.service.impl.GuestbookLocalServiceImpl" id="com.ethan.svc.service.GuestbookLocalService" />
+	<bean class="com.ethan.svc.service.persistence.impl.GuestbookPersistenceImpl" id="com.ethan.svc.service.persistence.GuestbookPersistence" parent="basePersistence" />
+	<bean class="com.ethan.svc.service.impl.GuestbookEntryLocalServiceImpl" id="com.ethan.svc.service.GuestbookEntryLocalService" />
+	<bean class="com.ethan.svc.service.persistence.impl.GuestbookEntryPersistenceImpl" id="com.ethan.svc.service.persistence.GuestbookEntryPersistence" parent="basePersistence" />
+</beans>
